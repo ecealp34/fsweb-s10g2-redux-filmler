@@ -2,9 +2,13 @@ import React from 'react';
 
 import MovieListItem from './MovieListItem';
 import MovieFooter from './MovieFooter';
+import { useSelector } from 'react-redux';
+import movieReducer from '../reducers';
 
 const MovieList = (props) => {
-  const movies = [];
+ 
+  const movies = useSelector((store) => store.movieReducer.movies)
+  console.log("filmler", movies)
 
   return (
     <div className="flex-1">
@@ -19,7 +23,7 @@ const MovieList = (props) => {
               <th></th>
             </tr>
           </thead>
-
+        
           <tbody className='text-sm'>
             {
               movies.map(movie => <MovieListItem key={movie.id} movie={movie} />)
